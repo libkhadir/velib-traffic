@@ -42,4 +42,5 @@ jobs:
           
       - name: Process step
         run: |
+          export LOCAL_HOME=$(pwd)
           python process.py
