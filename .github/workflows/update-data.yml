@@ -26,7 +26,7 @@ jobs:
           pip install -q findspark pyspark
           pip install -q numpy
           pip install -q pandas
-          pip install -q sqlite3
+          pip install -q pysqlite
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # Runs a single command using the runners shell
