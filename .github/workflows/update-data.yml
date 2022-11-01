@@ -24,6 +24,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -q findspark pyspark
+          pip install -q os
+          pip install numpy
+          pip install pandas
+          pip install sqlite3
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # Runs a single command using the runners shell
