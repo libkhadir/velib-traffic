@@ -7,7 +7,7 @@ import pandas as pd
 import sqlite3
 from pyspark.sql import functions
 
-os.environ['SPARK_HOME'] = '/content/spark-3.3.1-bin-hadoop3'
+os.environ['SPARK_HOME'] = os.environ['HOME'] + '/spark-3.3.1-bin-hadoop3'
 
 
 findspark.init()
