@@ -31,3 +31,7 @@ jobs:
         run: |
           chmod +x install-spark.sh
           ./install-spark.sh
+          
+      - name: Process step
+        run: |
+          python process.py
