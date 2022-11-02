@@ -46,3 +46,7 @@ jobs:
         run: |
           export LOCAL_HOME=$(pwd)
           python process.py
+          
+      - name: Push results
+        run: |
+          ls -lrt exports/
