@@ -97,4 +97,6 @@ for d in data['code']:
 
     plt.plot(hours, avail, label=days[day - 10])
   
-  plt.savefig('exports/' + station_code + '.png')
+  plt.savefig('exports/' + str(station_code) + '.png')
+
+print('process done')
