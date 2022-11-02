@@ -84,7 +84,9 @@ data['availability'] = (data['bikes'] + data['Ebikes']) / data['slots']
 
 sn.set()
 
+count = 0
 for d in data['code']:
+  count+=1
   station_code = d
   plt.figure(figsize=(14,9))
   days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
@@ -95,8 +97,10 @@ for d in data['code']:
     hours = numpy.asarray([[x, x+1] for x in range(23)]).flatten()
     avail = numpy.asarray([[data_sub_station.values[i, 1], data_sub_station.values[i, 1]] for i in range(23)]).flatten()
 
-    #plt.plot(hours, avail, label=days[day - 10])
+    plt.plot(hours, avail, label=days[day - 10])
   
-  #plt.savefig('exports/' + str(station_code) + '.png')
+  plt.savefig('exports/' + str(station_code) + '.png')
+  if count > 3:
+    break
 
 print('process done')
