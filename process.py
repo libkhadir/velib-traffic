@@ -5,7 +5,7 @@ import os
 import numpy
 import pandas as pd
 import sqlite3
-from pyspark.sql import 
+from pyspark.sql import functions
 import matplotlib.pyplot as plt
 import seaborn as sn
 
