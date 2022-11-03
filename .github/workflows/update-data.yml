@@ -36,11 +36,13 @@ jobs:
         run: |
           chmod +x install-spark.sh
           ./install-spark.sh
+          ls -lrt
       
       - name: Import db
         run: |
           chmod +x db-import.sh
           ./db-import.sh
+          ls -lrt
           
       - name: Process step
         run: |
