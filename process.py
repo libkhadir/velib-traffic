@@ -8,7 +8,7 @@ import sqlite3
 from pyspark.sql import functions
 import matplotlib.pyplot as plt
 import seaborn as sn
-from datetime import date
+from datetime import date, timedelta
 
 os.environ['SPARK_HOME'] = os.environ['LOCAL_HOME'] + '/spark-3.3.1-bin-hadoop3'
 
@@ -22,12 +22,13 @@ print('spark initialisation done')
 
 df = []
 
-today = date.today()
-value = str(today)
-dayNumber = int(value[len(value) - 1:len(value)])
+currentDate = date.today()
 
-for i in range(0, 7):
-  dbName = (value[0:len(value) - 1] + '{}-data.db').format(dayNumber - i)
+for i in range(1, 8):
+  currentDate = currentDate - timedelta(days=i)
+  value = str(currentDate)
+  dayNumber = int(value[len(value) - 1:len(value)])
+  dbName = (value[0:len(value) - 1] + '{}-data.db').format(dayNumber)
   print('loading db : ', dbName)
   velib = sqlite3.connect(dbName)
   fetches = velib.execute("""select * from status
