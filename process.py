@@ -84,13 +84,15 @@ data['availability'] = (data['bikes'] + data['Ebikes']) / data['slots']
 
 sn.set()
 
-def filter_data(codesList, station_code):
+def filter_data(codesList):
   for d in codesList:
     if d == 10107:
       return d
   return -1
 
-for d in list(filter_data, data['code']):
+for d in filter(filter_data, data['code']):
+  if d == -1:
+    break
   station_code = d
   plt.figure(figsize=(14,9))
   days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
