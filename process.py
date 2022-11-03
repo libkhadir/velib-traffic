@@ -8,6 +8,7 @@ import sqlite3
 from pyspark.sql import functions
 import matplotlib.pyplot as plt
 import seaborn as sn
+from datetime import date
 
 os.environ['SPARK_HOME'] = os.environ['LOCAL_HOME'] + '/spark-3.3.1-bin-hadoop3'
 
@@ -21,8 +22,11 @@ print('spark initialisation done')
 
 df = []
 
+today = date.today()
+value = str(today)
+
 for i in range(0, 7):
-  velib = sqlite3.connect('2019-03-1{}-data.db'.format(i))
+  velib = sqlite3.connect((value[0:len(value) - 1] + '{}-data.db').format(i))
   fetches = velib.execute("""select * from status
     left join statusConso on statusConso.id = status.idConso""").fetchall()
   if len(df) == 0:
