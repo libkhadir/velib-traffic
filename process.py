@@ -26,7 +26,9 @@ today = date.today()
 value = str(today)
 
 for i in range(0, 7):
-  velib = sqlite3.connect((value[0:len(value) - 1] + '{}-data.db').format(i))
+  dbName = (value[0:len(value) - 1] + '{}-data.db').format(i)
+  print('loading db : ', dbName)
+  velib = sqlite3.connect(dbName)
   fetches = velib.execute("""select * from status
     left join statusConso on statusConso.id = status.idConso""").fetchall()
   if len(df) == 0:
