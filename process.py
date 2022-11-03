@@ -24,7 +24,7 @@ df = []
 
 today = date.today()
 value = str(today)
-dayNumber = int(value[len(value) - 1, len(value)])
+dayNumber = int(value[len(value) - 1:len(value)])
 
 for i in range(0, 7):
   dbName = (value[0:len(value) - 1] + '{}-data.db').format(dayNumber - i)
