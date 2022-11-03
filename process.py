@@ -24,9 +24,10 @@ df = []
 
 today = date.today()
 value = str(today)
+dayNumber = int(value[len(value) - 1, len(value)])
 
 for i in range(0, 7):
-  dbName = (value[0:len(value) - 1] + '{}-data.db').format(i)
+  dbName = (value[0:len(value) - 1] + '{}-data.db').format(dayNumber - i)
   print('loading db : ', dbName)
   velib = sqlite3.connect(dbName)
   fetches = velib.execute("""select * from status
