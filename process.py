@@ -84,9 +84,13 @@ data['availability'] = (data['bikes'] + data['Ebikes']) / data['slots']
 
 sn.set()
 
-count = 0
-for d in data['code']:
-  count+=1
+def filter_data(codesList, station_code):
+  for d in codesList:
+    if d == 10107:
+      return d
+  return -1
+
+for d in list(filter_data, data['code']):
   station_code = d
   plt.figure(figsize=(14,9))
   days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
@@ -100,7 +104,5 @@ for d in data['code']:
     plt.plot(hours, avail, label=days[day - 10])
   
   plt.savefig('exports/' + str(station_code) + '.png')
-  if count > 3:
-    break
 
 print('process done')
