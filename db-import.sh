@@ -1,1 +1,5 @@
-for i in {0..6}; do curl -O https://velib.nocle.fr/dump/2019-03-1$i-data.db -k; done;
+now=$(date +%F)
+for i in {0..6}; do 
+  currentdate = "$now -$i days"
+  curl -O https://velib.nocle.fr/dump/$currentdate-data.db -k; 
+done;
