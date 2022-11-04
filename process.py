@@ -24,7 +24,7 @@ df = []
 
 currentDate = date.today()
 
-for i in range(1, 8):
+for i in range(2, 9):
   currentDate = currentDate - timedelta(days=i)
   value = str(currentDate)
   dayNumber = int(value[len(value) - 1:len(value)])
