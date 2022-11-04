@@ -104,6 +104,8 @@ for k in range(2, 9):
   print('selected day ', day)
   data_sub_station = data.loc[(data['code'] == station_code) & (data['day'] == day), ['hour', 'availability']]
   data_sub_station = data_sub_station.sort_values('hour')
+  if len(data_sub_station.values) == 0:
+    break
   hours = numpy.asarray([[x, x+1] for x in range(23)]).flatten()
   avail = numpy.asarray([[data_sub_station.values[i, 1], data_sub_station.values[i, 1]] for i in range(23)]).flatten()
 
