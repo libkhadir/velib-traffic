@@ -22,13 +22,12 @@ print('spark initialisation done')
 
 df = []
 
-currentDate = date.today()
+now = date.today()
 
 for i in range(2, 9):
-  currentDate = currentDate - timedelta(days=i)
+  currentDate = now - timedelta(days=i)
   value = str(currentDate)
-  dayNumber = int(value[len(value) - 1:len(value)])
-  dbName = (value[0:len(value) - 1] + '{}-data.db').format(dayNumber)
+  dbName = value + '-data.db'
   print('loading db : ', dbName)
   velib = sqlite3.connect(dbName)
   fetches = velib.execute("""select * from status
