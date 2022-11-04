@@ -99,7 +99,9 @@ days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
   value = str(currentDate)
+  print('ploting date ', value)
   day=value.split('-')[2]
+  print('selected day ', day)
   data_sub_station = data.loc[(data['code'] == station_code) & (data['day'] == day), ['hour', 'availability']]
   data_sub_station = data_sub_station.sort_values('hour')
   hours = numpy.asarray([[x, x+1] for x in range(23)]).flatten()
