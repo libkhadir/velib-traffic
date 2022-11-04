@@ -96,13 +96,16 @@ station_code = 10107
 plt.figure(figsize=(14,9))
 days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
   
-for day in range(10,11):
+for k in range(2, 9):
+  currentDate = now - timedelta(days=k)
+  value = str(currentDate)
+  day=value.split('-')[2]
   data_sub_station = data.loc[(data['code'] == station_code) & (data['day'] == day), ['hour', 'availability']]
   data_sub_station = data_sub_station.sort_values('hour')
   hours = numpy.asarray([[x, x+1] for x in range(23)]).flatten()
   avail = numpy.asarray([[data_sub_station.values[i, 1], data_sub_station.values[i, 1]] for i in range(23)]).flatten()
 
   plt.plot(hours, avail, label=days[day - 10])
+  plt.savefig('exports/' + str(station_code) + '-' + day + '.png')
   
-plt.savefig('exports/' + str(station_code) + '.png')
 print('process done')
