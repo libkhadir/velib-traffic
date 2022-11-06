@@ -106,7 +106,8 @@ for k in range(2, 9):
   hours = numpy.asarray([[x, x+1] for x in range(23)]).flatten()
   avail = numpy.asarray([[data_sub_station.values[i, 1], data_sub_station.values[i, 1]] for i in range(23)]).flatten()
 
-  plt.plot(hours, avail)
+  plt.plot(hours, avail, label=days[currentDate.weekday()])
+  plt.lengend()
   plt.savefig('export.png')
   
 print('process done')
