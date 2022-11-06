@@ -1,6 +1,10 @@
 name: Data update
 on:
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   # This workflow contains a single job called "build"
   data-update-job:
@@ -49,6 +53,10 @@ jobs:
           export LOCAL_HOME=$(pwd)
           python process.py
           
-      - name: Push results
+      - name: Push result
         run: |
-          ls -lrt exports/
+         git config --global user.email "tkhadir.dev@gmail.com"
+         git config --global user.name "tkhadir"
+         git add export.png
+         git commit -m "feat: add results"
+         git push origin
