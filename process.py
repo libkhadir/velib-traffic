@@ -108,6 +108,7 @@ for k in range(2, 9):
 
   plt.plot(hours, avail, label=days[currentDate.weekday()])
   plt.xlabel("Heures")
+  plt.ylabel("Disponibilité (%)")
   plt.legend()
   plt.savefig('export.png')
   
