@@ -100,7 +100,7 @@ for k in range(2, 9):
   currentDate = now - timedelta(days=k)
   value = str(currentDate)
   print('plotting date ', value)
-  day=value.split('-')[2]
+  day=int(value.split('-')[2])
   print('selected day ', day)
   data_sub_station = data.loc[(data['code'] == station_code) & (data['day'] == day), ['hour', 'availability']]
   data_sub_station = data_sub_station.sort_values('hour')
