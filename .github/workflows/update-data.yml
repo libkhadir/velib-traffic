@@ -53,6 +53,7 @@ jobs:
       - name: Process step
         run: |
           export LOCAL_HOME=$(pwd)
+          rm -rf export.png
           python process.py
           
       - name: Push result
