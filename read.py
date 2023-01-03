@@ -10,16 +10,6 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 from datetime import date, timedelta
 
-os.environ['SPARK_HOME'] = os.environ['LOCAL_HOME'] + '/spark-3.3.1-bin-hadoop3'
-
-
-findspark.init()
-
-sc = SparkContext('local')
-sql_c = SQLContext(sc)
-
-print('spark initialisation done')
-
 df = []
 
 now = date.today()
