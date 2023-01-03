@@ -56,6 +56,11 @@ jobs:
           rm -rf export.png
           python process.py
           
+      - name: Export step
+        run: |
+          export LOCAL_HOME=$(pwd)
+          python export.py
+          
       - name: Push result
         run: |
          git config --global user.email "tkhadir.dev@gmail.com"
