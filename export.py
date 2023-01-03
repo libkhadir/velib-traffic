@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 from datetime import date, timedelta
 
+data = pd.read_csv('tmp.csv')
 data = data.drop(['minute'], axis=1)
 
 data['availability'] = (data['bikes'] + data['Ebikes']) / data['slots']
