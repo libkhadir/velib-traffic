@@ -83,6 +83,6 @@ for station in bikes_per_station:
 data_raw = numpy.asarray(data_raw)
 data_raw.shape
 
-data = pd.DataFrame(data=data_raw,
+df = pd.DataFrame(data=data_raw,
                     columns=['code', 'day', 'month', 'hour', 'minute', 'bikes', 'Ebikes', 'slots'])
 df.to_csv('tmp.csv')
