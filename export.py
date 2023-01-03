@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 from datetime import date, timedelta
 
+now = date.today()
+
 data = pd.read_csv('tmp.csv')
 data = data.drop(['minute'], axis=1)
 
