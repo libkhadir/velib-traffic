@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 from datetime import date, timedelta
 
-df = []
+counter=0
 
 now = date.today()
 
@@ -22,10 +22,11 @@ for i in range(2, 9):
   velib = sqlite3.connect(dbName)
   fetches = velib.execute("""select * from status
     left join statusConso on statusConso.id = status.idConso""").fetchall()
-  if len(df) == 0:
+  if counter == 0:
     df = pd.DataFrame.from_records(fetches)
     df.to_csv('prepare.csv', index=False)
   else:
-    df = pd.concat((df, pd.DataFrame.from_records(fetches)))
+    df = pd.DataFrame.from_records(fetches)
     df.to_csv('prepare.csv', mode='a', index=False, header=False)
+  counter+=1
 print('db import done')
