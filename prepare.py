@@ -20,7 +20,7 @@ for i in range(2, 9):
   velib = sqlite3.connect(dbName)
 
 
-df.read_csv('prepare.csv')
+df = pd.read_csv('prepare.csv')
 
 _f_d = velib.execute("""select * from status
     left join statusConso on statusConso.id = status.idConso""")
