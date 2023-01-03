@@ -55,6 +55,11 @@ jobs:
           export LOCAL_HOME=$(pwd)
           python read.py
           
+      - name: Prepare step
+        run: |
+          export LOCAL_HOME=$(pwd)
+          python prepare.py
+          
       - name: Process step
         run: |
           export LOCAL_HOME=$(pwd)
