@@ -1,3 +1,25 @@
+import findspark
+from pyspark.sql import SparkSession, SQLContext
+from pyspark import SparkContext
+import os
+import numpy
+import pandas as pd
+import sqlite3
+from pyspark.sql import functions
+import matplotlib.pyplot as plt
+import seaborn as sn
+from datetime import date, timedelta
+
+os.environ['SPARK_HOME'] = os.environ['LOCAL_HOME'] + '/spark-3.3.1-bin-hadoop3'
+
+
+findspark.init()
+
+sc = SparkContext('local')
+sql_c = SQLContext(sc)
+
+print('spark initialisation done')
+
 trips = sql_c.read.csv("velib.csv", header=True, sep=",")
 print('db loaded to spark')
 
