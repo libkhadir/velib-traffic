@@ -1,3 +1,15 @@
+import findspark
+from pyspark.sql import SparkSession, SQLContext
+from pyspark import SparkContext
+import os
+import numpy
+import pandas as pd
+import sqlite3
+from pyspark.sql import functions
+import matplotlib.pyplot as plt
+import seaborn as sn
+from datetime import date, timedelta
+
 data = data.drop(['minute'], axis=1)
 
 data['availability'] = (data['bikes'] + data['Ebikes']) / data['slots']
