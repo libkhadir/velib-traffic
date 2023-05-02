@@ -104,3 +104,4 @@ for k in range(2, 9):
 plt.xlabel("Heures")
 plt.ylabel("Disponibilité (%)")
 plt.legend()
+plt.savefig('export.png')
