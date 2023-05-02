@@ -4,6 +4,8 @@ from pyspark.sql import functions
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 
+now = date.today()
+
 def get_spark_session(env, appName):
     return SparkSession. \
         builder. \
@@ -91,7 +93,7 @@ order by day, hour asc
 df = sql_c.sql(query) \
     .toPandas()
 
-now = date.today()
+
 plt.figure(figsize=(14,9))
 days=['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
 for k in range(2, 9):
