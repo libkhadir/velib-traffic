@@ -50,26 +50,11 @@ jobs:
           ./db-import.sh
           ls -lrt
           
-      - name: Read step
-        run: |
-          export LOCAL_HOME=$(pwd)
-          python read.py
-          
-      - name: Prepare step
-        run: |
-          export LOCAL_HOME=$(pwd)
-          python prepare.py
-          
       - name: Process step
         run: |
           export LOCAL_HOME=$(pwd)
           rm -rf export.png
           python process.py
-          
-      - name: Export step
-        run: |
-          export LOCAL_HOME=$(pwd)
-          python export.py
           
       - name: Push result
         run: |
