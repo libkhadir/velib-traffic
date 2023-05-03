@@ -26,7 +26,7 @@ for k in range(2, 9):
   i = f'{currentDate.day:02}'
   data_dict[i] = sql_c.read.format('jdbc') \
         .options(driver='org.sqlite.JDBC', dbtable='status',
-                 url=f'jdbc:sqlite:2023-04-{i:01}-data.db')\
+                 url=f'jdbc:sqlite:2023-04-{i}-data.db')\
         .load()
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
