@@ -22,11 +22,12 @@ sql_c = SQLContext(spark.sparkContext)
 data_dict = {}
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
-  print('extracting {} with day={}'.format(currentDate, currentDate.day))
+  dburi = f'jdbc:sqlite:{currentDate}-data.db'
+  print('extracting {} with day={} db-uri={}'.format(currentDate, currentDate.day, dburi))
   i = currentDate.day
   data_dict[i] = sql_c.read.format('jdbc') \
         .options(driver='org.sqlite.JDBC', dbtable='status',
-                 url=f'jdbc:sqlite:{currentDate}-data.db')\
+                 url=dburi)\
         .load()
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
