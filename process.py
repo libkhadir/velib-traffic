@@ -19,16 +19,24 @@ spark = get_spark_session('local', 'demo spark')
 spark.sql('SELECT current_date').show()
 
 sql_c = SQLContext(spark.sparkContext)
+
+def extract_db(uri):
+    try:
+        return sql_c.read.format('jdbc') \
+                    .options(driver='org.sqlite.JDBC', dbtable='status',
+                             url=uri)\
+                    .load()
+    except:
+        print("cannot load db at {}".format(uri))
+        return None
+ 
 data_dict = {}
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
   dburi = f'jdbc:sqlite:{currentDate}-data.db'
   print('extracting {} with day={} db-uri={}'.format(currentDate, currentDate.day, dburi))
   i = currentDate.day
-  data_dict[i] = sql_c.read.format('jdbc') \
-        .options(driver='org.sqlite.JDBC', dbtable='status',
-                 url=dburi)\
-        .load()
+  data_dict[i] = extract_db(dburi)
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
   i = currentDate.day
@@ -48,9 +56,10 @@ sql_c.sql(query)
 for k in range(2, 9):
   currentDate = now - timedelta(days=k)
   i = currentDate.day
+  dburi = f'jdbc:sqlite:{currentDate}-data.db'
   data_dict[i] = sql_c.read.format('jdbc') \
         .options(driver='org.sqlite.JDBC', dbtable='statusConso',
-                 url=f'jdbc:sqlite:2023-04-{i}-data.db')\
+                 url=dburi)\
         .option("customSchema", "date STRING")\
         .load()
 for k in range(2, 9):
